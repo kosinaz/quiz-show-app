@@ -10,7 +10,7 @@ const game = new Phaser.Game({
 
 let statement = 0;
 let answers = [];
-let points = [
+let players = [
   {
     name: 'Vasember',
     point: 0

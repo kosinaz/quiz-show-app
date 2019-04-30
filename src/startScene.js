@@ -15,15 +15,7 @@ class StartScene extends Phaser.Scene {
 
     const scene = this.scene;
 
-    let hero = 0;
-    const heroes = [
-      '1. Vasember',
-      '2. Amerika Kapitány',
-      '3. Thor',
-      '4. Hulk',
-      '5. Fekete Özvegy',
-      '6. Sólyomszem'
-    ];
+    let key = 0;
 
     this.add.image(0, 0, 'bg').setOrigin(0);
 
@@ -38,24 +30,24 @@ class StartScene extends Phaser.Scene {
       });
 
     this.input.keyboard.on('keydown', function (event) {
-      if (hero === 0) {
+      if (key === 0) {
         if (event.key === '1') {
-          hero = 1;
+          key = 1;
         } else if (event.key === '2') {
-          hero = 2;
+          key = 2;
         } else if (event.key === '3') {
-          hero = 3;
+          key = 3;
         } else if (event.key === '4') {
-          hero = 4;
+          key = 4;
         } else if (event.key === '5') {
-          hero = 5;
+          key = 5;
         } else if (event.key === '6') {
-          hero = 6;
+          key = 6;
         }
-        if (!hero) {
+        if (!key) {
           return;
         }
-        this.add.text(50, 700, heroes[hero - 1])
+        this.add.text(50, 700, key + '. ' + players[key - 1].name)
           .setFont('Impact')
           .setFontSize(64)
           .setColor('#ffffff')

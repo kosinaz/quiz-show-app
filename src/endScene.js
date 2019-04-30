@@ -15,19 +15,11 @@ class EndScene extends Phaser.Scene {
   
       const scene = this.scene;
   
-      let hero = 0;
-      const heroes = [
-        '1. Vasember',
-        '2. Amerika Kapitány',
-        '3. Thor',
-        '4. Hulk',
-        '5. Fekete Özvegy',
-        '6. Sólyomszem'
-      ];
+      let key = 0;
   
       this.add.image(0, 0, 'end').setOrigin(0);
-      points.sort((a, b) => parseFloat(b.point) - parseFloat(a.point));
-      console.log(points);
+      players.sort((a, b) => parseFloat(b.point) - parseFloat(a.point));
+      console.log(players);
   
       let first = this.add.text(1350, 150, '1.')
         .setFont('Impact')
@@ -35,7 +27,7 @@ class EndScene extends Phaser.Scene {
         .setColor('#ffffff')
         .setInteractive()
         .on('pointerup', function () {
-            first.text = '1. ' + points[0].name;
+            first.text = '1. ' + players[0].name;
         });
     
         let second = this.add.text(1350, 250, '2.')
@@ -44,7 +36,7 @@ class EndScene extends Phaser.Scene {
         .setColor('#ffffff')
         .setInteractive()
         .on('pointerup', function () {
-            second.text = '2. ' + points[1].name;
+            second.text = '2. ' + players[1].name;
         });
 
         let third = this.add.text(1350, 350, '3.')
@@ -53,7 +45,7 @@ class EndScene extends Phaser.Scene {
         .setColor('#ffffff')
         .setInteractive()
         .on('pointerup', function () {
-          third.text = '3. ' + points[2].name;
+          third.text = '3. ' + players[2].name;
         });
   
     }
