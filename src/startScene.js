@@ -25,13 +25,11 @@ class StartScene extends Phaser.Scene {
       '6. Sólyomszem'
     ];
 
-    this.add.image(0, 0, 'bg')
-      .setOrigin(0)
-      .setInteractive()
-      .setAlpha(0.5);
+    this.add.image(0, 0, 'bg').setOrigin(0);
 
-    this.add.text(620, 120, 'Start')
-      .setFont('Arial')
+    this.add.text(960, 50, 'Végjáték')
+      .setFont('Impact')
+      .setOrigin(0.5)
       .setFontSize(64)
       .setColor('#ffffff')
       .setInteractive()
@@ -57,8 +55,8 @@ class StartScene extends Phaser.Scene {
         if (!hero) {
           return;
         }
-        this.add.text(100, 650, heroes[hero - 1])
-          .setFont('Arial')
+        this.add.text(50, 700, heroes[hero - 1])
+          .setFont('Impact')
           .setFontSize(64)
           .setColor('#ffffff')
           .setInteractive()

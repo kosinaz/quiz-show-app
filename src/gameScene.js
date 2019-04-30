@@ -5,11 +5,6 @@ class GameScene extends Phaser.Scene {
 
   create() {
 
-    this.add.image(0, 0, 'bg')
-      .setOrigin(0)
-      .setInteractive()
-      .setAlpha(0.1);
-
     const scene = this.scene;
     let hero = 0;
     const heroes = [
@@ -37,6 +32,7 @@ class GameScene extends Phaser.Scene {
       '13+1. Marvel Moziverzum'
     ];
     const statements = [
+//      'Lórum ipse, a hatlanc mélső fili lesz a tetlet, ma goloma aggság. A koránság akomosságába be van építve egy felzetvetes, múlékos karc - a ködönb -, melyen a mékos erelzetek tüldi kaléját nyüvenítették, s így a rögségök folyamán eléggé szemetett ahhoz, hogy lenészre a vénységre a fosztó erelzeteknek is pasztjon.',
       'Vasembernek 3 filmre van szüksége, hogy megtanulja, nem a páncél teszi az embert. \n\nA 3 film során ellenségei Obadiah Stane, és Ivan Vanko, valamint barátai, James Rhodes, Bruce Banner és Pepper Potts egyaránt magukra öltik a páncélt, ám az egyetlen igazi Vasember mégis Tony Stark marad.',
       'Hulk hosszú bújkálás után a gyógyír reményében visszatér Amerikába, ahol azonban többen is útját állják: \napósjelöltje, Ross tábornok, a gamma robbanás másik áldozata, Förtelem, és a gonosz tudós, Dr.Samuel Sterns.',
       'Thor, Asgard királya a 3 film során az északi mitológia több világában is győztes csatákat vív, míg végül vereséget nem szenved, és eléri a Ragnarök. \n\nJotunheimben a jégóriásokat győzi le, Svartalfheimben sötét elfeket, Nidavellirben a törpéket, Muspelheimben pedig tűzdémonokat.',
@@ -53,16 +49,17 @@ class GameScene extends Phaser.Scene {
       'A 6 végtelen kő végigkíséri a Marvel Moziverzum egészét.\n\nA Tér kőre Vörös Koponya talál rá a norvégiai Tønsbergben, a Valóság kőre Jane Foster Svartalfheimben, a sötét elfek birodalmában, a Hatalom kőre pedig Űrlord Moragon.\nAz Elme kő már kezdettől fogva Thanosnál volt, az Idő kő A Misztikus Tanok Mestereinél, a Lélek kő pedig Vormiron.'
     ];
 
-    this.add.text(100, 30, titles[statement])
-      .setFont('Arial')
+    this.add.text(50, 30, titles[statement])
+      .setFont('Impact')
       .setFontSize(64)
-      .setColor('#ffff00')
+      .setColor('#000000')
 
-    this.add.text(100, 150, statements[statement])
+    this.add.text(50, 150, statements[statement])
       .setFont('Arial')
       .setFontSize(56)
-      .setColor('#ffff00')
-      .setWordWrapWidth(1600);
+      .setColor('#000000')
+      .setFontStyle('bold')
+      .setWordWrapWidth(1820);
 
     this.input.keyboard.on('keydown', function (event) {
 
@@ -83,27 +80,34 @@ class GameScene extends Phaser.Scene {
         if (!hero) {
           return;
         }
-        this.add.text(100, 650, heroes[hero - 1])
-          .setFont('Arial')
+        this.add.text(50, 700, heroes[hero - 1])
+          .setFont('Impact')
           .setFontSize(64)
-          .setColor('#ffffff')   
-        this.add.text(100, 750, 'Talált')
-          .setFont('Arial')
+          .setColor('#000000')   
+        this.add.text(50, 800, 'Talált')
+          .setFont('Impact')
           .setFontSize(64)
-          .setColor('#aaffaa')
+          .setColor('#00ff00')
           .setInteractive()
-          .on('pointerup', function () {
-            statement += 1;
-            scene.restart();
+          .on('pointerup', function () {            
+            answers[statement] = hero;
+            points[hero - 1].point += 1;
+            console.log(answers);
+            if (statement < 13) {
+              statement += 1;
+              scene.restart();
+            } else {
+              scene.start('EndScene');
+            }
           });
-        this.add.text(270, 750, '/')
-          .setFont('Arial')
+        this.add.text(210, 800, '/')
+          .setFont('Impact')
           .setFontSize(64)
-          .setColor('#ffffff')
-        this.add.text(300, 750, 'Nem talált')
-          .setFont('Arial')
+          .setColor('#000000')
+        this.add.text(250, 800, 'Nem talált')
+          .setFont('Impact')
           .setFontSize(64)
-          .setColor('#ffaaaa')
+          .setColor('#ff0000')
           .setInteractive()
           .on('pointerup', function () {
             scene.restart();
@@ -111,22 +115,5 @@ class GameScene extends Phaser.Scene {
       }
 
     }.bind(this));
-  }
-
-  /**
-   * Counts the identical characters in a word.
-   * @param {string} word The word to be processed.
-   * @returns {Object} Each character with the number of their occurance.
-   */
-  countChars(word) {
-    let numberOfChars = {};
-    for (let i = 0; i < word.length; i += 1) {
-      if (numberOfChars.hasOwnProperty(word.charAt(i))) {
-        numberOfChars[word.charAt(i)] += 1;
-      } else {
-        numberOfChars[word.charAt(i)] = 1;
-      }
-    }
-    return numberOfChars;
   }
 }
