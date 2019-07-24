@@ -13,10 +13,6 @@ class EndScene extends Phaser.Scene {
   
     create() {
   
-      const scene = this.scene;
-  
-      let key = 0;
-  
       this.add.image(0, 0, 'end').setOrigin(0);
       players.sort((a, b) => parseFloat(b.point) - parseFloat(a.point));
       console.log(players);
