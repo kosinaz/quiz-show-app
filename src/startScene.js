@@ -20,7 +20,7 @@ class StartScene extends Phaser.Scene {
 
     this.add.text(480, 50, 'Marvel')
       .setFont('Arial')
-      .setFontSize(64)          
+      .setFontSize(48)          
       .setOrigin(0.5)
       .setFontStyle('bold')
       .setColor('#ffffff')
@@ -33,7 +33,7 @@ class StartScene extends Phaser.Scene {
 
     this.add.text(1440, 50, 'Harry Potter')
       .setFont('Arial')
-      .setFontSize(64)          
+      .setFontSize(48)          
       .setOrigin(0.5)
       .setFontStyle('bold')
       .setColor('#ffffff')
@@ -51,28 +51,30 @@ class StartScene extends Phaser.Scene {
           return;
         }
         if (event.key < players.mcu.length + 1) {
-          this.add.text(480, 800, key + '. ' + players.mcu[key - 1])
+          this.add.text(480, 675, key + '.\n' + players.mcu[key - 1])
             .setFont('Arial')
-            .setFontSize(64)          
-            .setOrigin(0.5)
+            .setFontSize(48)          
+            .setOrigin(0.5, 0)
             .setFontStyle('bold')
             .setColor('#ffffff')
+            .setAlign('center')
             .setInteractive()
             .on('pointerup', function () {
-              scene.restart();
-          });
+              this.scene.restart();
+          }, this);
         }
         if (event.key < players.hp.length + 1) {
-          this.add.text(1440, 800, key + '. ' + players.hp[key - 1])
+          this.add.text(1440, 675, key + '.\n' + players.hp[key - 1])
             .setFont('Arial')
-            .setFontSize(64)          
-            .setOrigin(0.5)
+            .setFontSize(48)          
+            .setOrigin(0.5, 0)
             .setFontStyle('bold')
             .setColor('#ffffff')
+            .setAlign('center')
             .setInteractive()
             .on('pointerup', function () {
-              scene.restart();
-          });
+              this.scene.restart();
+          }, this);
         }
       }
     }.bind(this));

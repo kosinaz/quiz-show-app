@@ -12,25 +12,29 @@ class GameScene extends Phaser.Scene {
     let playerLabels = [];
 
     players[category].forEach(function (player, i) {
-      this.add.text(240 + i * 480, 750, (i + 1) + '. ' + player)
+      let spacing = 1920 / (players[category].length * 2);
+      this.add.text(spacing + i * spacing * 2, 675, (i + 1) + '.\n' + player)
         .setFont('Arial')
-        .setFontSize(64)          
-        .setOrigin(0.5)
+        .setFontSize(48)          
+        .setOrigin(0.5, 0)
         .setFontStyle('bold')
+        .setAlign('center')
         .setColor('#000000');
-      this.add.text(240 + i * 480, 825, 0)
+      this.add.text(spacing + i * spacing * 2, 850, 0)
         .setFont('Arial')
-        .setFontSize(64)          
-        .setOrigin(0.5)
+        .setFontSize(48)          
+        .setOrigin(0.5, 0)
         .setFontStyle('bold')
+        .setAlign('center')
         .setColor('#000000');
     }.bind(this));
 
     this.add.text(50, 50, statements[category][statement])
       .setFont('Arial')
-      .setFontSize(56)
-      .setColor('#000000')
+      .setFontSize(48)
       .setFontStyle('bold')
+      .setLineSpacing(24)
+      .setColor('#000000')
       .setWordWrapWidth(1820);
 
     this.input.keyboard.on('keydown', function (event) {
