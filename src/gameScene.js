@@ -4,15 +4,10 @@ class GameScene extends Phaser.Scene {
   }
 
   create() {
-
-    const scene = this.scene;
-
     let key = 0;
+    let spacing = 1920 / (players[category].length * 2);
 
-    let playerLabels = [];
-
-    players[category].forEach(function (player, i) {
-      let spacing = 1920 / (players[category].length * 2);
+    players[category].forEach(function (player, i) {      
       this.add.text(spacing + i * spacing * 2, 675, (i + 1) + '.\n' + player)
         .setFont('Arial')
         .setFontSize(48)          
@@ -20,7 +15,7 @@ class GameScene extends Phaser.Scene {
         .setFontStyle('bold')
         .setAlign('center')
         .setColor('#000000');
-      this.add.text(spacing + i * spacing * 2, 850, 0)
+      this.add.text(spacing + i * spacing * 2, 850, points[i])
         .setFont('Arial')
         .setFontSize(48)          
         .setOrigin(0.5, 0)
@@ -44,12 +39,11 @@ class GameScene extends Phaser.Scene {
         if (!key) {
           return;
         }
-        
-
-        this.add.text(720, 800, '✔')
-          .setFont('Impact')
+        this.add.text(spacing + (key - 1) * spacing * 2, 840, '✔  ')
+          .setFont('Arial')
           .setFontSize(64)
-          .setColor('#00ff00')
+          .setColor('#00ff00')          
+          .setOrigin(1, 0)
           .setInteractive()
           .on('pointerup', function () {            
             answers[statement] = key;
@@ -58,23 +52,20 @@ class GameScene extends Phaser.Scene {
             console.log(points);
             if (statement < statements[category].length - 1) {
               statement += 1;
-              scene.restart();
+              this.scene.restart();
             } else {
-              scene.start('EndScene');
+              this.scene.start('EndScene');
             }
-          });
-        this.add.text(890, 800, '/')
-          .setFont('Impact')
-          .setFontSize(64)
-          .setColor('#000000')
-        this.add.text(940, 800, '✖')
-          .setFont('Impact')
-          .setFontSize(64)
+          }, this);
+        this.add.text(spacing + (key - 1) * spacing * 2, 840, '  ✖')
+          .setFont('Arial')
+          .setFontSize(64)          
+          .setOrigin(0, 0)
           .setColor('#ff0000')
           .setInteractive()
           .on('pointerup', function () {
-            scene.restart();
-          });
+            this.scene.restart();
+          }, this);
       }
 
     }.bind(this));

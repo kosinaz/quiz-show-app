@@ -5,6 +5,10 @@ class StartScene extends Phaser.Scene {
 
   preload() {
     this.load.image('bg', 'assets/images/bg.jpg');
+    this.load.image('Griffendél', 'assets/images/gryffindor.png');
+    this.load.image('Mardekár', 'assets/images/slytherin.png');
+    this.load.image('Hugrabug', 'assets/images/hufflepuff.png');
+    this.load.image('Hollóhát', 'assets/images/ravenclaw.png');
     this.load.json('statements', 'data/statements.json');
     this.load.json('players', 'data/players.json');
   }
@@ -28,6 +32,7 @@ class StartScene extends Phaser.Scene {
       .setInteractive()
       .on('pointerup', function () {
         category = 'mcu';
+        points = [0, 0, 0, 0, 0, 0];
         this.scene.start('GameScene');
       }, this);
 
@@ -41,6 +46,7 @@ class StartScene extends Phaser.Scene {
       .setInteractive()
       .on('pointerup', function () {
         category = 'hp';
+        points = [0, 0, 0, 0];
         this.scene.start('GameScene');
       }, this);
 
@@ -53,7 +59,7 @@ class StartScene extends Phaser.Scene {
         if (event.key < players.mcu.length + 1) {
           this.add.text(480, 675, key + '.\n' + players.mcu[key - 1])
             .setFont('Arial')
-            .setFontSize(48)          
+            .setFontSize(48)
             .setOrigin(0.5, 0)
             .setFontStyle('bold')
             .setColor('#ffffff')
