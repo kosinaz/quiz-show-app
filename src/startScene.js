@@ -9,6 +9,12 @@ class StartScene extends Phaser.Scene {
     this.load.image('Mardekár', 'assets/images/slytherin.png');
     this.load.image('Hugrabug', 'assets/images/hufflepuff.png');
     this.load.image('Hollóhát', 'assets/images/ravenclaw.png');
+    this.load.image('Vasember', 'assets/images/ironman.png');
+    this.load.image('Amerika Kapitány', 'assets/images/captainamerica.png');
+    this.load.image('Thor', 'assets/images/thor.png');
+    this.load.image('Hulk', 'assets/images/hulk.png');
+    this.load.image('Fekete Özvegy', 'assets/images/blackwidow.png');
+    this.load.image('SólyomSzem', 'assets/images/hawkeye.png');
     this.load.json('statements', 'data/statements.json');
     this.load.json('players', 'data/players.json');
   }
