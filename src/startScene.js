@@ -11,8 +11,6 @@ class StartScene extends Phaser.Scene {
 
   create() {
 
-    const scene = this.scene;
-
     statements = this.cache.json.get('statements');
     players = this.cache.json.get('players');
 
@@ -21,26 +19,30 @@ class StartScene extends Phaser.Scene {
     this.add.image(0, 0, 'bg').setOrigin(0);
 
     this.add.text(480, 50, 'Marvel')
-      .setFont('Impact')
+      .setFont('Arial')
+      .setFontSize(64)          
       .setOrigin(0.5)
-      .setFontSize(64)
+      .setFontStyle('bold')
       .setColor('#ffffff')
+      .setStroke('#000000', 8)
       .setInteractive()
       .on('pointerup', function () {
         category = 'mcu';
-        scene.start('GameScene');
-    });
+        this.scene.start('GameScene');
+      }, this);
 
     this.add.text(1440, 50, 'Harry Potter')
-      .setFont('Impact')
+      .setFont('Arial')
+      .setFontSize(64)          
       .setOrigin(0.5)
-      .setFontSize(64)
+      .setFontStyle('bold')
       .setColor('#ffffff')
+      .setStroke('#000000', 8)
       .setInteractive()
       .on('pointerup', function () {
         category = 'hp';
-        scene.start('GameScene');
-    });
+        this.scene.start('GameScene');
+      }, this);
 
     this.input.keyboard.on('keydown', function (event) {
       if (key === 0 && event.key < 7) {
@@ -50,9 +52,10 @@ class StartScene extends Phaser.Scene {
         }
         if (event.key < players.mcu.length + 1) {
           this.add.text(480, 800, key + '. ' + players.mcu[key - 1])
-            .setFont('Impact')
+            .setFont('Arial')
             .setFontSize(64)          
             .setOrigin(0.5)
+            .setFontStyle('bold')
             .setColor('#ffffff')
             .setInteractive()
             .on('pointerup', function () {
@@ -61,9 +64,10 @@ class StartScene extends Phaser.Scene {
         }
         if (event.key < players.hp.length + 1) {
           this.add.text(1440, 800, key + '. ' + players.hp[key - 1])
-            .setFont('Impact')
+            .setFont('Arial')
             .setFontSize(64)          
             .setOrigin(0.5)
+            .setFontStyle('bold')
             .setColor('#ffffff')
             .setInteractive()
             .on('pointerup', function () {

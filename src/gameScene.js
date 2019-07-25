@@ -13,9 +13,16 @@ class GameScene extends Phaser.Scene {
 
     players[category].forEach(function (player, i) {
       this.add.text(240 + i * 480, 750, (i + 1) + '. ' + player)
-        .setFont('Impact')
+        .setFont('Arial')
         .setFontSize(64)          
         .setOrigin(0.5)
+        .setFontStyle('bold')
+        .setColor('#000000');
+      this.add.text(240 + i * 480, 825, 0)
+        .setFont('Arial')
+        .setFontSize(64)          
+        .setOrigin(0.5)
+        .setFontStyle('bold')
         .setColor('#000000');
     }.bind(this));
 
