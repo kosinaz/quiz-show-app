@@ -50,8 +50,8 @@ class GameScene extends Phaser.Scene {
             points[key - 1] = points[key - 1] > 0 ? points[key - 1] + 1 : 1;
             console.log(answers);
             console.log(points);
+            statement += 1;
             if (statement < statements[category].length - 1) {
-              statement += 1;
               this.scene.restart();
             } else {
               this.scene.start('EndScene');

@@ -5,7 +5,7 @@ const game = new Phaser.Game({
   backgroundColor: '#ffffff',
   parent: "game-container",
   pixelArt: true,
-  scene: [StartScene, GameScene, EndScene]
+  scene: [StartScene, GameScene, EndScene, BonusScene]
 });
 
 let statement = 0;

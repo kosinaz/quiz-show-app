@@ -3,14 +3,6 @@ class EndScene extends Phaser.Scene {
       super('EndScene');
     }
   
-    preload() {
-  
-      this.load.image(
-        'end',
-        'assets/images/end.jpg'
-      );
-    }
-  
     create() {
 
       let winner = players[category][points.indexOf(Math.max(...points))];
@@ -25,7 +17,11 @@ class EndScene extends Phaser.Scene {
         .setColor('#000000')
         .setWordWrapWidth(1820);
 
-      this.add.image(960, 200, winner).setOrigin(0.5, 0);
+      this.add.image(960, 200, winner).setOrigin(0.5, 0)
+        .setInteractive()
+        .on('pointerup', function () {
+          this.scene.start('BonusScene');
+        }, this);
 
       let spacing = 1920 / (players[category].length * 2);  
       players[category].forEach(function (player, i) {      
