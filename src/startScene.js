@@ -14,7 +14,7 @@ class StartScene extends Phaser.Scene {
     this.load.image('Thor', 'assets/images/thor.png');
     this.load.image('Hulk', 'assets/images/hulk.png');
     this.load.image('Fekete Özvegy', 'assets/images/blackwidow.png');
-    this.load.image('SólyomSzem', 'assets/images/hawkeye.png');
+    this.load.image('Sólyomszem', 'assets/images/hawkeye.png');
     this.load.json('statements', 'data/statements.json');
     this.load.json('players', 'data/players.json');
   }
@@ -63,7 +63,7 @@ class StartScene extends Phaser.Scene {
           return;
         }
         if (event.key < players.mcu.length + 1) {
-          this.add.text(480, 675, key + '.\n' + players.mcu[key - 1])
+          this.add.text(480, 740, key + '\n' + players.mcu[key - 1])
             .setFont('Arial')
             .setFontSize(48)
             .setOrigin(0.5, 0)
@@ -76,7 +76,7 @@ class StartScene extends Phaser.Scene {
           }, this);
         }
         if (event.key < players.hp.length + 1) {
-          this.add.text(1440, 675, key + '.\n' + players.hp[key - 1])
+          this.add.text(1440, 740, key + '\n' + players.hp[key - 1])
             .setFont('Arial')
             .setFontSize(48)          
             .setOrigin(0.5, 0)

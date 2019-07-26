@@ -8,7 +8,7 @@ class GameScene extends Phaser.Scene {
     let spacing = 1920 / (players[category].length * 2);
 
     players[category].forEach(function (player, i) {      
-      this.add.text(spacing + i * spacing * 2, 675, (i + 1) + '.\n' + player)
+      this.add.text(spacing + i * spacing * 2, 740, (i + 1) + '\n' + player)
         .setFont('Arial')
         .setFontSize(48)          
         .setOrigin(0.5, 0)
