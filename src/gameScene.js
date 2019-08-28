@@ -8,7 +8,7 @@ class GameScene extends Phaser.Scene {
     let spacing = 1920 / (players[category].length * 2);
 
     players[category].forEach(function (player, i) {      
-      this.add.text(spacing + i * spacing * 2, 675, (i + 1) + '.\n' + player)
+      this.add.text(spacing + i * spacing * 2, 740, (i + 1) + '\n' + player)
         .setFont('Arial')
         .setFontSize(48)          
         .setOrigin(0.5, 0)
@@ -50,8 +50,8 @@ class GameScene extends Phaser.Scene {
             points[key - 1] = points[key - 1] > 0 ? points[key - 1] + 1 : 1;
             console.log(answers);
             console.log(points);
+            statement += 1;
             if (statement < statements[category].length - 1) {
-              statement += 1;
               this.scene.restart();
             } else {
               this.scene.start('EndScene');
